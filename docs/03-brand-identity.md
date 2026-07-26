@@ -2,14 +2,14 @@
 
 ## Direction générale
 
-Identité visuelle :
+### Identité visuelle
 
 * sobre ;
 * premium ;
 * technique ;
 * orientée ingénierie.
 
-Références :
+### Références
 
 * Linear ;
 * Vercel ;
@@ -62,5 +62,4 @@ Principes :
 * animations discrètes ;
 * composants simples.
 
-Le design doit refléter une approche d'ingénieur :
-fonctionnel, précis et durable.
+> Le design doit refléter une approche d'ingénieur : fonctionnel, précis et durable.

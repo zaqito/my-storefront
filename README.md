@@ -8,16 +8,12 @@ L'objectif est de construire une présence web durable permettant de présenter 
 
 Le site n'est pas un CV en ligne mais une vitrine d'expertise.
 
----
-
 ## Objectifs principaux
 
 * Présenter une expertise en conception et développement de solutions logicielles complexes.
 * Montrer une capacité à comprendre un besoin métier ou technique et proposer une solution adaptée.
 * Valoriser une approche d'ingénierie : qualité, architecture, maintenabilité et fiabilité.
 * Préparer progressivement une activité freelance.
-
----
 
 ## Principes
 
@@ -27,8 +23,6 @@ Le site n'est pas un CV en ligne mais une vitrine d'expertise.
 * Aucun travail temporaire ou jetable.
 * Chaque élément produit doit pouvoir évoluer vers la version finale.
 
----
-
 ## Structure du dépôt
 
 ```
@@ -37,20 +31,25 @@ expertise-website/
 README.md
 
 docs/
-    00-project-charter.md
-    01-vision.md
-    02-architecture-site.md
-    03-brand-identity.md
-    04-design-system.md
-    decisions.md
-    roadmap.md
+ ├── 00-project-charter.md
+ ├── 01-vision.md
+ ├── 02-architecture-site.md
+ ├── 03-brand-identity.md
+ └── roadmap.md
 
 src/
+ ├── index.html
+ ├── css/
+ ├── js/
+ └── assets/
+
 
 public/
 ```
 
----
+## Documentation
+
+See `docs/`
 
 ## État du projet
 
