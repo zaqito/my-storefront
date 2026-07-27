@@ -19,10 +19,6 @@ The project follows an incremental approach:
 
 **Sprint 0 — Project definition**
 
-Status:
-
-`██████████ 100%`
-
 Objectives:
 
 * Define project scope.
