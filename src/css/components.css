@@ -26,7 +26,7 @@
 .eyebrow {
     color: var(--color-primary);
     font-weight: 600;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--gap-2);
 }
 
 .section-title {
@@ -70,10 +70,4 @@
 
 .link:hover {
     text-decoration: underline;
-}
-
-.site-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
