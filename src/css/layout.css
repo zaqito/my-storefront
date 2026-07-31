@@ -53,8 +53,8 @@ section {
 .hero-actions {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
+    gap: var(--gap-2);
+    margin-top: var(--gap-4);
 }
 
 @media (min-width: 768px) {
