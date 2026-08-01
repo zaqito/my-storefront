@@ -85,12 +85,40 @@
 
     toggleBtn.textContent = showLabel;
 
+    const openItems = () => {
+        extraItems.forEach((item) => {
+            item.setAttribute("aria-hidden", "false");
+            item.style.maxHeight = `${item.scrollHeight}px`;
+        });
+    };
+
+    const closeItems = () => {
+        extraItems.forEach((item) => {
+            // Re-lock the exact current height first, so the transition
+            // has a real starting point to animate back down from.
+            item.style.maxHeight = `${item.scrollHeight}px`;
+            item.setAttribute("aria-hidden", "true");
+            requestAnimationFrame(() => {
+                item.style.maxHeight = "0px";
+            });
+        });
+    };
+
+    // Once each item's open transition finishes, release its height cap
+    // entirely so content can never end up clipped (e.g. text reflow).
+    extraItems.forEach((item) => {
+        item.addEventListener("transitionend", (event) => {
+            if (event.propertyName !== "max-height") return;
+            if (item.getAttribute("aria-hidden") === "false") {
+                item.style.maxHeight = "none";
+            }
+        });
+    });
+
     toggleBtn.addEventListener("click", () => {
         const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
 
-        extraItems.forEach((item) => {
-            item.hidden = isExpanded;
-        });
+        isExpanded ? closeItems() : openItems();
 
         toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
         toggleBtn.textContent = isExpanded ? showLabel : hideLabel;

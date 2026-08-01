@@ -77,6 +77,12 @@
     gap: var(--gap-3);
 }
 
+.timeline-extra {
+    max-height: 0;
+    overflow: hidden;
+    transition: .3s ease;
+}
+
 .timeline-marker {
     flex-shrink: 0;
     width: 10px;
