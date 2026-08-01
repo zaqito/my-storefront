@@ -71,3 +71,73 @@
 .link:hover {
     text-decoration: underline;
 }
+
+.timeline-item {
+    display: flex;
+    gap: var(--gap-3);
+}
+
+.timeline-marker {
+    flex-shrink: 0;
+    width: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-dot {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    margin-top: .4rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+.timeline-line {
+    width: 2px;
+    flex-grow: 1;
+    margin-top: var(--gap-1);
+    background: var(--color-border);
+}
+
+.timeline-item:last-child .timeline-line {
+    display: none;
+}
+
+.timeline-content {
+    padding-bottom: var(--gap-5);
+}
+
+.timeline-date {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-1);
+    margin-bottom: var(--gap-1);
+}
+
+.timeline-company {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--gap-2);
+}
+
+.timeline-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-1);
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--color-primary);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.timeline-toggle::after {
+    content: "↓";
+    transition: transform .2s ease;
+}
+
+.timeline-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}

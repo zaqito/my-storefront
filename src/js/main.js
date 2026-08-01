@@ -71,3 +71,29 @@
     });
 
 })();
+
+(function () {
+
+    const toggleBtn = document.querySelector(".timeline-toggle");
+    const extraItems = document.querySelectorAll(".timeline-extra");
+
+    if (!toggleBtn || !extraItems.length) return;
+
+    const count = extraItems.length;
+    const showLabel = `Show ${count} more experience${count > 1 ? "s" : ""}`;
+    const hideLabel = "Show less";
+
+    toggleBtn.textContent = showLabel;
+
+    toggleBtn.addEventListener("click", () => {
+        const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
+
+        extraItems.forEach((item) => {
+            item.hidden = isExpanded;
+        });
+
+        toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
+        toggleBtn.textContent = isExpanded ? showLabel : hideLabel;
+    });
+
+})();
