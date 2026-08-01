@@ -125,3 +125,29 @@
     });
 
 })();
+
+(function () {
+
+    const carousel = document.querySelector(".project-carousel");
+    const prevBtn = document.querySelector(".carousel-arrow-prev");
+    const nextBtn = document.querySelector(".carousel-arrow-next");
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    const scrollByCard = (direction) => {
+        const card = carousel.querySelector(".project-card");
+        if (!card) return;
+
+        const cardWidth = card.getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(carousel).columnGap || 0);
+
+        carousel.scrollBy({
+            left: (cardWidth + gap) * direction,
+            behavior: "smooth"
+        });
+    };
+
+    prevBtn.addEventListener("click", () => scrollByCard(-1));
+    nextBtn.addEventListener("click", () => scrollByCard(1));
+
+})();
