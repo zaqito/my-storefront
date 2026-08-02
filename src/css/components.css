@@ -197,6 +197,26 @@
     scroll-snap-type: x mandatory;
     padding-bottom: var(--gap-2);
     scrollbar-color: var(--color-border) transparent;
+    --carousel-visible: 1.25; /*Number of cards visible at once. A fractional value leaves a
+                                peek of the next card as a scroll affordance*/
+}
+
+@media (min-width: 600px) {
+    .project-carousel {
+        --carousel-visible: 2.25;
+    }
+}
+
+@media (min-width: 900px) {
+    .project-carousel {
+        --carousel-visible: 3.25;
+    }
+}
+
+@media (min-width: 1200px) {
+    .project-carousel {
+        --carousel-visible: 4.25;
+    }
 }
 
 .project-carousel::-webkit-scrollbar {
@@ -209,12 +229,16 @@
 }
 
 .project-card {
-    flex: 0 1 auto;
+    /* Fixed width computed only from --carousel-visible and the gap, so every card is exactly the same size regardless of its image
+       or text. min-width: 0 stops long content (e.g. a badge label) from forcing the card wider than this. */
+    flex: 0 0 calc((100% - (var(--carousel-visible) - 1) * var(--gap-3)) / var(--carousel-visible));
+    min-width: 0;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    gap: var(--gap-2);
-    padding: var(--gap-3);
+    gap: var(--gap-1);
+    padding: var(--gap-2);
+    overflow-wrap: break-word;
     transition: var(--transition-fast);
 }
 
@@ -224,9 +248,19 @@
 
 .project-card-image {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2 / 1;
     object-fit: cover;
     border-radius: var(--radius);
+}
+
+.project-card-description {
+    /* Clamp to 2 lines so description length never affects card height. `line-clamp` is the standard property; the -webkit-
+       prefixed set is kept alongside for broader engine support. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
 }
 
 .project-card:hover {
