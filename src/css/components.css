@@ -272,10 +272,23 @@
     margin-top: auto;
 }
 
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--gap-4);
+}
+
 .expertise-card {
     display: flex;
     flex-direction: column;
     gap: var(--gap-2);
+    padding: var(--gap-3);
+    overflow-wrap: break-word;
+    /* Establishes a query context sized to the card itself, so the
+       title can react to the card's actual width regardless of which
+       column count the grid currently landed on. */
+    container-type: inline-size;
+    container-name: expertise-card;
 }
 
 .expertise-card-heading {
@@ -287,6 +300,25 @@
 .expertise-card-heading .card-title {
     margin-bottom: 0;
     font-size: var(--font-size-3);
+    /* Flex items refuse to shrink below their own content width by
+       default (min-width: auto), which is what was pushing the title
+       past the card edge instead of wrapping. This lets it shrink and
+       wrap freely. */
+    min-width: 0;
+}
+
+/* Below this container width, the two-word titles ("Tools &
+   Technologies", "Real-Time Systems") no longer comfortably fit next
+   to the icon at the default size, so step both down together. */
+@container expertise-card (max-width: 15rem) {
+    .expertise-card-heading .card-title {
+        font-size: var(--font-size-2);
+    }
+
+    .expertise-icon {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
 }
 
 .expertise-icon {
