@@ -53,10 +53,11 @@ See `docs/`
 
 ## État du projet
 
-Sprint actuel : Sprint 0 — Documentation
+Sprint actuel : Sprint 1 — Prototype
 
-Prochaine étape :
+Prochaines étapes :
 
-* validation de l'identité et du contenu ;
-* création du prototype HTML/CSS ;
-* définition progressive du design system.
+* structure du source folder ;
+* squelette HTML ;
+* fondations CSS ;
+* premiers composants.
