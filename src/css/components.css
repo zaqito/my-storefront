@@ -194,6 +194,7 @@
     gap: var(--gap-3);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    padding-top: var(--gap-2);
     padding-bottom: var(--gap-2);
     scrollbar-color: var(--color-border) transparent;
     --carousel-visible: 1.1; /*Number of cards visible at once. A fractional value leaves a
@@ -418,7 +419,20 @@
     font-size: var(--font-size-4);
     font-weight: 600;
     letter-spacing: -0.01em;
-    color: var(--color-text);
+}
+
+.contact-card-tagline-primary {
+    display: block;
+    color: var(--color-primary);
+}
+
+.contact-card-tagline-note {
+    display: block;
+    margin-top: var(--gap-2);
+    font-size: var(--font-size-2);
+    font-weight: 400;
+    letter-spacing: normal;
+    color: var(--color-text-muted);
 }
 
 .contact-links {
@@ -524,7 +538,7 @@
     background: var(--color-border);
 }
 
-.approach-strip-node:first-child {
+.approach-strip-node.is-active {
     background: var(--color-primary);
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 20%, transparent);
 }

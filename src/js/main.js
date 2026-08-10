@@ -201,10 +201,16 @@
 (function () {
 
     const items = document.querySelectorAll("#approach-accordion .accordion-item");
+    const stripNodes = document.querySelectorAll("#approach-strip .approach-strip-node");
 
     if (!items.length) return;
 
-    items.forEach((item) => {
+    const syncStrip = (index, isExpanded) => {
+        const node = stripNodes[index];
+        if (node) node.classList.toggle("is-active", isExpanded);
+    };
+
+    items.forEach((item, index) => {
         const trigger = item.querySelector(".accordion-trigger");
         const panel = item.querySelector(".accordion-panel");
 
@@ -230,15 +236,16 @@
 
         // Reflect whatever the markup already declared (the first step
         // ships expanded by default) before wiring up interaction.
-        if (trigger.getAttribute("aria-expanded") === "true") {
-            open();
-        }
+        const startsExpanded = trigger.getAttribute("aria-expanded") === "true";
+        if (startsExpanded) open();
+        syncStrip(index, startsExpanded);
 
         trigger.addEventListener("click", () => {
             const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
             isExpanded ? close() : open();
             trigger.setAttribute("aria-expanded", String(!isExpanded));
+            syncStrip(index, !isExpanded);
         });
     });
 
